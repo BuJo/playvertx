@@ -1,6 +1,7 @@
 package de.jbuch.play.vertx;
 
 import ch.lambdaj.function.convert.Converter;
+import freemarker.core.StringArraySequence;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,6 +37,15 @@ public class MessagePage extends PageObject {
     @FindBy(id = "status_info")
     private WebElement connectionInfo;
 
+    @FindBy(id = "sendButton")
+    private WebElement sendButton;
+
+    @FindBy(id = "sendAddress")
+    private WebElement sendAddress;
+
+    @FindBy(id = "sendMessage")
+    private WebElement sendMessage;
+
 
     public MessagePage(WebDriver driver) {
         super(driver);
@@ -59,6 +70,24 @@ public class MessagePage extends PageObject {
 
     public void clearSubscribeField() {
         subscribeAddressInput.clear();
+    }
+
+    public void sendMessage(String address, String message) {
+        sendAddress.sendKeys(address);
+        sendMessage.sendKeys(message);
+        sendButton.click();
+    }
+
+    public List<String> getMessagesByAddress(String address) {
+        List<String> messages = new ArrayList<>();
+
+        for (String message : getMessages()) {
+            if (message.contains(address)) {
+                messages.add(message);
+            }
+        }
+
+        return messages;
     }
 
     public List<String> getMessages() {

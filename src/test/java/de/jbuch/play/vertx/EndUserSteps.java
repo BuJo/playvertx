@@ -43,4 +43,21 @@ public class EndUserSteps extends ScenarioSteps {
         onHomePage().connect();
         assertThat(onHomePage().isConnected(), is(true));
     }
+
+    public void sends_message(String address, String message) {
+        onHomePage().sendMessage(address, message);
+    }
+
+    public void should_see_his_message(String address, String message) {
+        List<String> messages = onHomePage().getMessagesByAddress(address);
+
+        boolean found = false;
+        for (String m : messages) {
+            if (!found) {
+                found = m.contains(message);
+            }
+        }
+
+        assertTrue("We should find our own message", found);
+    }
 }
