@@ -18,7 +18,7 @@ public class EndUserSteps extends ScenarioSteps {
 
     @Step
     public void subscribes_to_address(String address) {
-        onHomePage().subscribeToAdress(address);
+        onHomePage().subscribeToAddress(address);
     }
 
     @Step

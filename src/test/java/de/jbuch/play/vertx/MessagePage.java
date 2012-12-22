@@ -51,9 +51,14 @@ public class MessagePage extends PageObject {
         return connectionInfo.getText().equals("Connected");
     }
 
-    public void subscribeToAdress(String address) {
+    public void subscribeToAddress(String address) {
+        clearSubscribeField();
         subscribeAddressInput.sendKeys(address);
         subscribeButton.click();
+    }
+
+    public void clearSubscribeField() {
+        subscribeAddressInput.clear();
     }
 
     public List<String> getMessages() {

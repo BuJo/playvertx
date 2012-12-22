@@ -16,8 +16,11 @@ public class TickerServer extends Verticle {
     @Override
     public void start() throws Exception {
         final EventBus eb = vertx.eventBus();
+        JsonObject config = container.getConfig();
 
-        vertx.setPeriodic(5000, new Handler<Long>() {
+        int tickAt = config.getInteger("tick");
+
+        vertx.setPeriodic(tickAt, new Handler<Long>() {
 
             @Override
             public void handle(Long event) {

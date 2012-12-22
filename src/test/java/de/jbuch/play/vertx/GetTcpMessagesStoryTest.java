@@ -26,6 +26,7 @@ public class GetTcpMessagesStoryTest {
         endUser.is_on_the_message_page();
         endUser.connects_to_messagebus();
         endUser.subscribes_to_address("tcp.message");
+        endUser.subscribes_to_address("tcp.ticker");
         endUser.should_see_some_messages();
     }
 }
