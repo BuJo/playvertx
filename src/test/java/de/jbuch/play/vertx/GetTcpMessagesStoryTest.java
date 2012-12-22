@@ -24,8 +24,8 @@ public class GetTcpMessagesStoryTest {
     @Test
     public void subscribing_to_messages_should_print_messages() {
         endUser.is_on_the_message_page();
-        endUser.subscribes_to_address("tcp.messages");
+        endUser.connects_to_messagebus();
+        endUser.subscribes_to_address("tcp.message");
         endUser.should_see_some_messages();
-
     }
 }

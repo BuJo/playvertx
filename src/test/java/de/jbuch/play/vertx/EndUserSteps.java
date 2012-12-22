@@ -4,8 +4,9 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import java.util.List;
+
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
 
@@ -22,7 +23,10 @@ public class EndUserSteps extends ScenarioSteps {
 
     @Step
     public void should_see_some_messages() {
-        assertThat(onHomePage().getMessages(), is(not(null)));
+        List<String> messages = onHomePage().getMessages();
+
+        assertNotNull(messages);
+        assertTrue("Should contain at least one message", messages.size() > 0);
     }
 
     private MessagePage onHomePage() {
@@ -32,5 +36,11 @@ public class EndUserSteps extends ScenarioSteps {
     @Step
     public void is_on_the_message_page() {
         onHomePage().open();
+    }
+
+    @Step
+    public void connects_to_messagebus() {
+        onHomePage().connect();
+        assertThat(onHomePage().isConnected(), is(true));
     }
 }
