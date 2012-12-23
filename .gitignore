@@ -1,3 +1,6 @@
 target
-untitled.iml
+*.iml
 .idea
+/*.out
+/web
+/mods
