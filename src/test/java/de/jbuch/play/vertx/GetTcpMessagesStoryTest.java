@@ -31,7 +31,7 @@ public class GetTcpMessagesStoryTest {
         endUser.should_see_some_messages();
     }
 
-    @Ignore("At the moment we do not accept any messages in the backend")
+    @Pending
     @Test
     public void subscribing_and_sending_messages_should_print_messages() {
         endUser.is_on_the_message_page();

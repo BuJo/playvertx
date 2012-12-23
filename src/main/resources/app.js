@@ -14,7 +14,7 @@ var netServerConf = {
 };
 var tickerConf = {
     tick: 2000
-}
+};
 
 vertx.deployModule('vertx.web-server-v1.0', webServerConf);
 

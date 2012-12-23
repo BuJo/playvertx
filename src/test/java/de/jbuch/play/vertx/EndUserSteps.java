@@ -6,7 +6,6 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import java.util.List;
 
-import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 
@@ -41,7 +40,8 @@ public class EndUserSteps extends ScenarioSteps {
     @Step
     public void connects_to_messagebus() {
         onHomePage().connect();
-        assertThat(onHomePage().isConnected(), is(true));
+
+        assertTrue(onHomePage().isConnected());
     }
 
     public void sends_message(String address, String message) {

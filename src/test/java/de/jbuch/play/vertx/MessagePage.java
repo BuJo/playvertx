@@ -1,7 +1,6 @@
 package de.jbuch.play.vertx;
 
 import ch.lambdaj.function.convert.Converter;
-import freemarker.core.StringArraySequence;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
